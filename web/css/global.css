@@ -1,0 +1,31 @@
+body {
+	background-color: #f9f9f9;
+}
+
+.copyright {
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	text-align: center;
+	background-color: #f9f9f9;
+	border-top: 1px solid #ededed;
+	clear: both;
+	font-size: 15px;
+	position: fixed;
+	bottom:0;
+	top: 100%;
+	left: 50%;
+	margin: -42px 0 0 -50%;
+}
+#stuids {
+	height: 40px;
+	width: 100%;
+	font-size: 15px;
+	margin-bottom: 75px;
+}
+
+.url{
+	color: #101010;
+	letter-spacing: 0.05em;
+	opacity: 0.8;
+}
