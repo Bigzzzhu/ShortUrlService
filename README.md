@@ -3,4 +3,4 @@
 1、输入长链，生成短链
 2、访问短链，跳转到长链
 3、支持计数访问
-用Servlet+JSP+JavaBean+MySQL+c3p0连接池实现，生成网址的请求采用Servlet生成，filter进行请求过滤
+4、用Servlet+JSP+JavaBean+MySQL+c3p0连接池实现，生成网址的请求采用Servlet生成，filter进行请求过滤
