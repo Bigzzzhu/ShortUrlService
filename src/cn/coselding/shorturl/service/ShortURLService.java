@@ -19,4 +19,6 @@ public interface ShortURLService {
 	 */
 	public abstract UrlMap queryUrl(String shortUrl);
 
+	public abstract void addCount(String shortUrl);
+
 }

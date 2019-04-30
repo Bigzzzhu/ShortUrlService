@@ -1,9 +1,10 @@
 package cn.coselding.shorturl.filter;
 
-import cn.coselding.shorturl.domain.UrlMap;
 import cn.coselding.shorturl.service.ShortURLService;
 import cn.coselding.shorturl.service.impl.ShortURLServiceImpl;
+import cn.coselding.shorturl.domain.UrlMap;
 import cn.coselding.shorturl.utils.ConfigureUtils;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +38,9 @@ public class RedirectFilter implements Filter {
             UrlMap urlMap = service.queryUrl(url);
             if (urlMap != null) {
                 //正确，直接跳转
+                service.addCount(urlMap.getShortUrl());
                 response.sendRedirect(urlMap.getRealUrl());
+//                response.sendRedirect("/ShortURL/");
                 return;
             } else {
                 //短网址不存在

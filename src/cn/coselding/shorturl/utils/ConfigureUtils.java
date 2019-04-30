@@ -13,7 +13,7 @@ public class ConfigureUtils {
 	/**
 	 * 配置文件
 	 */
-	private static Properties properties = null;
+	private static Properties properties = null;//用于读取配置文件
 	/**
 	 * 配置文件输入流
 	 */

@@ -20,6 +20,8 @@ public class UrlMap {
 	 */
 	private Date createDate;
 
+	private int count;
+
 	public String getRealUrl() {
 		return realUrl;
 	}
@@ -44,10 +46,15 @@ public class UrlMap {
 		this.createDate = createDate;
 	}
 
+	public int getCount(){ return count ; }
+
+	public void setCount(int count){this.count=count;}
+
+
 	@Override
 	public String toString() {
 		return "UrlMap [realUrl=" + realUrl + ", shortUrl=" + shortUrl
-				+ ", createDate=" + createDate + "]";
+				+ ", createDate=" + createDate +  ", count=" + count+"]";
 	}
 
 }

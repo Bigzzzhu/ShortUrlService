@@ -30,4 +30,6 @@ public interface UrlMapDao {
 	public abstract UrlMap checkExist(String realUrl) throws SQLException;
 
 	List<UrlMap> queryUrlMaps()throws SQLException;
+
+	public void addCount(String shortUrl)throws SQLException;
 }

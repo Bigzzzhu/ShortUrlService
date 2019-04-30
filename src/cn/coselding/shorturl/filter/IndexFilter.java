@@ -1,7 +1,7 @@
 package cn.coselding.shorturl.filter;
 
-import cn.coselding.shorturl.domain.UrlMap;
 import cn.coselding.shorturl.service.impl.ShortURLServiceImpl;
+import cn.coselding.shorturl.domain.UrlMap;
 import cn.coselding.shorturl.utils.ConfigureUtils;
 
 import javax.servlet.*;
@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  */
-@WebFilter(filterName = "IndexFilter")
+@WebFilter(filterName = "IndexFilter")  //声明该类为过滤器，部署时被处理
 public class IndexFilter implements Filter {
     public void destroy() {
     }

@@ -43,53 +43,53 @@
 </div>
 <div class="splash-container">
     <div class="splash">
-        <div class="splash-subhead">
-            出于网站安全考虑，为避免本站短网址功能不幸成为不法分子犯罪的帮凶，特此关闭短网址创建的功能，并给出以下常见网址用于学习交流测试使用，谢谢合作！
+        <div class="splash-subhead" >
+            <form class="pure-form pure-form-aligned" action="${pageContext.request.contextPath }/create.do"  method="post">
+                <fieldset>
+                    <div class="pure-control-group">
+                        <label for="url">请输入URL：</label>
+                        <input id="url" type="text" name="url" value="${urlMap.realUrl }"
+                               placeholder="${message }"><span>${message }</span>
+                    </div>
+                    <div class="pure-control-group">
+                        <style scoped>
+                            .button-error,
+                            .button-error {
+                                background: rgb(202, 60, 60);
+                                font-size: 400%;
+                            }
+                        </style>
+                        <input type="submit" name="submit" value="提交" class="button-error pure-button">
+                    </div>
+                </fieldset>
+            </form>
+
             <table>
                 <thead>
                     <tr>
                         <td>实际网址</td>
                         <td>生成的短网址</td>
+                        <td>访问次数</td>
                     </tr>
                 </thead>
                 <c:forEach items="${list}" var="u">
                     <tbody>
+
                         <tr>
                             <td>${u.realUrl}</td>
-                            <td><a href="${host }${u.shortUrl}">${host }${u.shortUrl}</a></td>
+                            <td><a href="${host }${u.shortUrl}"  target="_blank">${host }${u.shortUrl}</a></td>
+                            <td>${u.count}</td>
+                             <%--1--%>
                         </tr>
                     </tbody>
                 </c:forEach>
             </table>
         </div>
-        <form class="pure-form pure-form-aligned" action="${pageContext.request.contextPath }/create.do" method="post">
-            <fieldset>
-                <div class="pure-control-group">
-                    <label for="url">请输入URL：</label>
-                    <input id="url" type="text" name="url" value="${urlMap.realUrl }"
-                           placeholder="URL"><span>${message }</span>
-                </div>
-                <div class="pure-control-group">
-                    <style scoped>
-                        .button-error,
-                        .button-error {
-                            background: rgb(202, 60, 60); /* this is a maroon */
-                            font-size: 400%;
-                        }
-                    </style>
-                    <input type="submit" name="submit" value="提交" class="button-error pure-button">
-                </div>
-            </fieldset>
-        </form>
+
     </div>
 </div>
 
 
-<div class="copyright">
-    <p>
-        Copyright &copy; 2016.Coselding All rights reserved. 鲁ICP备15036981号-2
-    </p>
-</div>
 </body>
 </html>
 

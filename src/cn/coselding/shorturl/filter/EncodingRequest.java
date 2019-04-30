@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * HttpServletRequest增强的包装类
+ * HttpServletRequest增强的包装类，处理get方法乱码问题
  *
  *
  */

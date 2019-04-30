@@ -4,6 +4,7 @@ import cn.coselding.shorturl.domain.UrlMap;
 import cn.coselding.shorturl.service.ShortURLService;
 import cn.coselding.shorturl.service.impl.ShortURLServiceImpl;
 import cn.coselding.shorturl.utils.ConfigureUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,36 +28,40 @@ public class CreateShortUrlServlet extends HttpServlet {
 					response);
 			return;
 		}
-		// 获取实际网址表单
+		// 获取输入实际网址
 		String url = request.getParameter("url");
-		// 实际网址为空
+		// 实际网址为空取实际网址表单
 		if (url == null || url.trim().equals("")) {
 			request.setAttribute("message", "网址不能为空哦！！！");
-			request.getRequestDispatcher("/index.jsp").forward(request,
-					response);
+			response.sendRedirect("/ShortURL/");
+//			request.getRequestDispatcher("/index.jsp").forward(request,
+//					response);
 			return;
 		}
 		//网址格式不匹配
 		String rex = "(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?";
 		if(!url.matches(rex)){
 			request.setAttribute("message", "网址格式不合法！！！");
-			request.getRequestDispatcher("/index.jsp").forward(request,
-					response);
+			response.sendRedirect("/ShortURL/");
+//			request.getRequestDispatcher("/index.jsp").forward(request,
+//					response);
 			return;
 		}
 
 		// 生成短网址和实际网址映射关系，存储数据库
 		ShortURLService service = new ShortURLServiceImpl();
 		UrlMap urlMap = service.createShortUrl(url);
-		List<UrlMap> mapList = new ArrayList<>();
+		List<UrlMap> mapList = new ArrayList<UrlMap>();
 		request.setAttribute("list", mapList);
 
 		// 信息回显到网页
-		String host = ConfigureUtils.getProperty("host") + "d/";
+		String host = ConfigureUtils.getProperty("host")+ "d/";
 		host = host + urlMap.getShortUrl();
 		request.setAttribute("host", host);
 
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		response.sendRedirect("/ShortURL/");
+//			request.getRequestDispatcher("/index.jsp").forward(request,
+//					response);
 		return;
 	}
 

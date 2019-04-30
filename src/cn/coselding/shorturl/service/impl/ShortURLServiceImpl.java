@@ -52,7 +52,7 @@ public class ShortURLServiceImpl implements ShortURLService {
                         urlMapDao.addUrlMap(urlMap);
                         return urlMap;
                     } else
-                    //被用了，使用数组下一个元素
+                        //被用了，使用数组下一个元素
                         continue;
                 }
                 //如果都被用了，短网址长度加一，继续找可用的短网址
@@ -86,18 +86,29 @@ public class ShortURLServiceImpl implements ShortURLService {
         }
     }
 
-    public List<UrlMap> queryUrlMaps(){
+    public List<UrlMap> queryUrlMaps() {
         try {
             JdbcUtils.setTransactionIsolation(JdbcUtils.TRANSACTION_READ_COMMITTED);
             JdbcUtils.startTransaction();
             JdbcUtils.setReadOnly();
 
-            return  urlMapDao.queryUrlMaps();
+            return urlMapDao.queryUrlMaps();
         } catch (SQLException e) {
             JdbcUtils.rollback();
             throw new RuntimeException(e);
         } finally {
             JdbcUtils.release();
+        }
+    }
+
+    public void addCount(String shortUrl) {
+        try {
+
+            urlMapDao.addCount(shortUrl);
+//            System.out.println(111);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
